@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Width */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1); /* Subtle transparency for the track */
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.2); /* Border with slight transparency */
+    transition: background 0.3s ease, border 0.3s ease;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.6); /* Dark transparent handle */
+    border-radius: 10px;
+    border: 2px solid rgba(255, 255, 255, 0.3); /* Inner border to give a glowing effect */
+    transition: background 0.3s ease, border 0.3s ease;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.8); /* Darker handle on hover */
+    border: 2px solid rgba(255, 255, 255, 0.5); /* Glow effect on hover */
+}
+
+/* Smooth transition when scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+[x-cloak] {
+    display: none;
+}
