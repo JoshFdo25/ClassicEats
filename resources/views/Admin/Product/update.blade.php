@@ -71,16 +71,7 @@
                                 <span class="text-red-700">{{ $message }}</span>
                             @enderror
                         </div>
-
-                        <div>
-                            <label for="quantity" class="block text-sm font-medium text-stone-700 dark:text-stone-300">Quantity</label>
-                            <input type="number" id="quantity" name="quantity" min="0" class="block w-full mt-1 text-sm border-stone-300 rounded-md shadow-sm focus:ring-blue-500
-                            focus:border-blue-500 dark:bg-stone-700 dark:border-stone-600 dark:text-stone-300" placeholder="Quantity" value="{{ $products->quantity }}">
-                            @error('quantity')
-                                <span class="text-red-700">{{ $message }}</span>
-                            @enderror
-                        </div>
-
+                        
                         <div>
                             <label for="image" class="block text-sm font-medium text-stone-700 dark:text-stone-300">Product Image</label>
                             <input type="file" id="image" name="image" accept="image/*"

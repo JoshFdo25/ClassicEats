@@ -5,9 +5,9 @@
         </h2>
     </x-slot>
 
-    <div class="py-12">
-        <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-stone-800 overflow-hidden shadow-lg sm:rounded-lg">
+    <div class="py-12 sm:px-4 px-2">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white dark:bg-stone-800 overflow-hidden shadow-lg rounded-lg">
                 <div class="flex items-center justify-between p-6 text-gray-900 dark:text-gray-100 border-b border-gray-200 dark:border-gray-700">
                     <h1 class="text-2xl font-semibold">List Product</h1>
                     <x-custom-button-1 href="{{ route('admin.products.create') }}">
@@ -17,14 +17,14 @@
                         Add Product
                     </x-custom-button-1>
                 </div>
-                <div class="p-4 space-y-4">
+                <div class="sm:p-8 p-6 space-y-4">
                     @if($products->isEmpty())
                         <div class="text-center text-gray-600 dark:text-gray-300 py-6">
                             <p class="text-lg font-semibold">No products found</p>
                             <p class="text-sm">Start by adding new products to the list.</p>
                         </div>
                     @else
-                        <div class="max-h-128 overflow-auto sm:rounded-lg mt-4">
+                        <div class="max-h-128 overflow-auto rounded-lg mt-4">
                             <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                                 <thead class="sticky top-0 text-xs text-gray-700 uppercase shadow-md dark:shadow-stone-800
                                 bg-gray-200 dark:bg-gray-900 dark:text-gray-400">
@@ -56,7 +56,15 @@
                                         <td class="px-6 py-4">{{ $product->category->name }}</td>
                                         <td class="px-6 py-4">{{ $product->description }}</td>
                                         <td class="px-6 py-4">{{ $product->ingredients }}</td>
-                                        <td class="px-6 py-4">{{ $product->quantity }}</td>
+                                        <td class="px-6 py-4">
+                                            <form action="{{ route('admin.products.toggleStatus', $product->id) }}" method="POST">
+                                                @csrf
+                                                @method('PATCH')
+                                                <button type="submit" class="px-3 py-2 text-white rounded-md shadow {{ $product->status ? 'bg-green-500 hover:bg-green-600' : 'bg-red-500 hover:bg-red-600' }}">
+                                                    {{ $product->status ? 'Available' : 'Not Available' }}
+                                                </button>
+                                            </form>
+                                        </td>
                                         <td class="px-6 py-4 text-nowrap">Rs. {{ number_format($product->price, 2) }}</td>
                                         <td class="px-6 py-4 flex">
                                             <div x-data="{ showDeleteModal: false }" class="flex space-x-4 mt-6">

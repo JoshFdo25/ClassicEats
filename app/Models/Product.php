@@ -13,14 +13,19 @@ class Product extends Model
     protected $table = 'products';
 
     protected $fillable = [
-        'name',
-        'description',
-        'ingredients',
-        'price',
-        'quantity',
-        'image',
-        'category_id',
+        'name', 
+        'description', 
+        'ingredients', 
+        'price', 
+        'image', 
+        'category_id', 
+        'status',
     ];
+    
+    public function isAvailable()
+    {
+        return $this->status;
+    }
 
     public function category()
     {

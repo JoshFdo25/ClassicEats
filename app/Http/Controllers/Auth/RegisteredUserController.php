@@ -47,6 +47,6 @@ class RegisteredUserController extends Controller
 
         // $token = $user->createToken($user->email . '_Auth_Token')->plainTextToken;
 
-        return redirect(route('dashboard', absolute: false));
+        return redirect(route('home', absolute: false));
     }
 }

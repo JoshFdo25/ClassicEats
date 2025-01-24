@@ -4,47 +4,27 @@
         <div class="relative flex justify-between items-center h-16">
             <!-- Logo Section -->
             <div class="flex-shrink-0">
-                <a href="{{ Auth::user()->usertype === 'admin' ? route('admin.products') : route('admin.products') }}" class="flex items-center gap-2 md:flex-none">
+                <a href="{{  route('admin.products') }}" class="flex items-center gap-2 md:flex-none">
                     <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 48 48" class="w-10 h-10" style="fill:#FFFFFF;">
                         <path d="M 21.5 2 C 20.672 2 20 2.672 20 3.5 L 20 5.5625 L 20 8.6035156 L 20 12 L 20 15 L 20 15.5 C 20 16.328 20.672 17 21.5 17 C 22.328 17 23 16.328 23 15.5 L 23 15 L 23 12 L 23 8.1035156 L 23 5.0625 L 23 3.5 C 23 2.672 22.328 2 21.5 2 z M 41.556641 2.0019531 C 41.456885 1.9981699 41.354328 2.0047344 41.251953 2.0214844 L 26 4.5625 L 26 7.6035156 L 41.746094 4.9785156 C 42.562094 4.8435156 43.115516 4.0709063 42.978516 3.2539062 C 42.859516 2.5390312 42.254932 2.0284355 41.556641 2.0019531 z M 15.5 3 C 14.672 3 14 3.672 14 4.5 L 14 6.5625 L 14 9.6035156 L 14 12 L 14 26 L 11 26 L 11 5.5 C 11 4.672 10.328 4 9.5 4 C 8.672 4 8 4.672 8 5.5 L 8 7.5625 L 5.2539062 8.0214844 C 4.4379063 8.1564844 3.8844844 8.9290937 4.0214844 9.7460938 C 4.1434844 10.479094 4.7780469 11 5.4980469 11 C 5.5800469 11 5.6620938 10.992516 5.7460938 10.978516 L 8 10.603516 L 8 12 L 5.5 12 C 4.672 12 4 12.672 4 13.5 C 4 14.328 4.672 15 5.5 15 L 8 15 L 8 26 L 5.5 26 C 3.57 26 2 27.57 2 29.5 C 2 38.598 9.402 46 18.5 46 L 29.5 46 C 38.598 46 46 38.598 46 29.5 C 46 27.57 44.43 26 42.5 26 L 17 26 L 17 12 L 17 9.1035156 L 17 6.0625 L 17 4.5 C 17 3.672 16.328 3 15.5 3 z M 26 12 L 26 15 L 41.5 15 C 42.328 15 43 14.328 43 13.5 C 43 12.672 42.328 12 41.5 12 L 26 12 z"></path>
                     </svg>
                     <span class="text-lg md:text-2xl font-playwrite-cu font-extrabold text-white">ClassicEats</span>
-                    @if(Auth::user()->usertype === 'admin')
-                        <span class="md:block text-sm text-white">Admin Panel</span>
-                    @endif
+                    <span class="md:block text-sm text-white">Admin Panel</span>
                 </a>
             </div>
 
             <!-- Desktop Menu -->
             <div class="absolute left-1/2 transform -translate-x-1/2 hidden md:flex space-x-5 items-center bg-gray-500 rounded-full p-1">
-                @if(Auth::user()->usertype === 'admin')
-                    <a href="{{ route('admin.products') }}"
-                    class="px-3 py-1 rounded-full transition-all duration-300 transform
-                            {{ request()->routeIs('admin.products') ? 'bg-[#001147] text-white font-semibold' : 'text-white hover:text-[#002147] hover:scale-105' }}">
-                        Products
-                    </a>
-                    <a href="{{ route('admin.categories') }}"
-                    class="px-3 py-1 rounded-full transition-all duration-300 transform
-                            {{ request()->routeIs('admin.categories') ? 'bg-[#001147] text-white font-semibold' : 'text-white hover:text-[#002147] hover:scale-105' }}">
-                        Categories
-                    </a>
-                @else
-                    <a href="#"
-                    class="px-3 py-1 rounded-full transition-all duration-300 transform
-                            {{ request()->routeIs('admin.products') ? 'bg-[#001147] text-white font-semibold' : 'text-white hover:text-[#002147] hover:scale-105' }}">
-                        Home
-                    </a>
-                    <a href="#"
-                    class="px-3 py-1 rounded-full transition-all duration-300 transform
-                            {{ request()->routeIs('admin.categories') ? 'bg-[#001147] text-white font-semibold' : 'text-white hover:text-[#002147] hover:scale-105' }}">
-                        Products
-                    </a>
-                    <a href="#"
-                    class="px-3 py-1 rounded-full transition-all duration-300 transform
-                            {{ request()->routeIs('admin.categories') ? 'bg-[#001147] text-white font-semibold' : 'text-white hover:text-[#002147] hover:scale-105' }}">
-                        Contact us
-                    </a>
-                @endif
+                <a href="{{ route('admin.products') }}"
+                class="px-3 py-1 rounded-full transition-all duration-300 transform
+                        {{ request()->routeIs('admin.products') ? 'bg-[#001147] text-white font-semibold' : 'text-white hover:text-[#002147] hover:scale-105' }}">
+                    Products
+                </a>
+                <a href="{{ route('admin.categories') }}"
+                class="px-3 py-1 rounded-full transition-all duration-300 transform
+                        {{ request()->routeIs('admin.categories') ? 'bg-[#001147] text-white font-semibold' : 'text-white hover:text-[#002147] hover:scale-105' }}">
+                    Categories
+                </a>
             </div>
 
             <!-- Profile and Toggle -->
@@ -54,18 +34,18 @@
                     <x-dropdown align="right" width="48">
                         <x-slot name="trigger">
                             <div class="relative group flex items-center">
-                                <button class="flex bg-gray-500 hover:bg-gray-700 p-1 rounded-full items-center space-x-2 focus:outline-none transition-all duration-500">
-                                    <div class="w-8 h-8 rounded-full overflow-hidden bg-gray-200 dark:bg-gray-700">
-                                        @if (Auth::user()->profile_picture)
+                                <button class="flex bg-gray-500 hover:bg-gray-700 p-1 rounded-full items-center transition-all duration-500">
+                                    <div class="w-8 h-8 rounded-full overflow-hidden bg-transparent">
+                                        @if (Auth::check() && Auth::user()->profile_picture)
                                             <img src="{{ asset('storage/' . Auth::user()->profile_picture) }}" class="object-cover w-full h-full" alt="Profile">
                                         @else
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-gray-500 dark:text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-white bg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4a4 4 0 110 8 4 4 0 010-8zm0 10c-5.333 0-8 2.667-8 4v2h16v-2c0-1.333-2.667-4-8-4z" />
                                             </svg>
                                         @endif
                                     </div>
                                     <span
-                                        class="hidden group-hover:inline-block text-white pr-4 transition-opacity duration-3000 opacity-0 group-hover:opacity-100 transform group-hover:translate-x-2"
+                                        class="hidden group-hover:inline-block text-white pr-4 transition-opacity opacity-0 group-hover:opacity-100 transform group-hover:translate-x-2"
                                         :class="{ 'inline-block': open }">
                                         {{ Auth::user()->name }}
                                     </span>
@@ -74,16 +54,16 @@
                         </x-slot>
 
                         <x-slot name="content">
-                            <x-dropdown-link :href="route('profile.edit')" class="flex items-center hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <x-dropdown-link :href="route('admin.profile.edit')" class="flex items-center hover:bg-gray-100 dark:hover:bg-gray-700">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 mr-2">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
                                 </svg>
                                 Profile
                             </x-dropdown-link>
-                            <form method="POST" action="{{ Auth::user()->usertype === 'admin' ? route('admin.logout') : route('logout') }}" class="mt-1">
+                            <form method="POST" action="{{ route('admin.logout') }}" class="mt-1">
                                 @csrf
                                 <x-dropdown-link 
-                                    href="{{ Auth::user()->usertype === 'admin' ? route('admin.logout') : route('logout') }}" 
+                                    href="{{ route('admin.logout') }}" 
                                     onclick="event.preventDefault(); this.closest('form').submit();" 
                                     class="flex items-center hover:bg-red-100 dark:hover:bg-red-800">
                                     <svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" stroke="currentColor" class="size-6 mr-2">
@@ -154,7 +134,7 @@
                 </div>
             </label>
         </div>
-        <form method="POST" action="{{ route('logout') }}" class="block">
+        <form method="POST" action="{{ route('admin.logout') }}" class="block">
             @csrf
             <button type="submit"
                     class="w-full text-left px-4 py-2 rounded-md transition

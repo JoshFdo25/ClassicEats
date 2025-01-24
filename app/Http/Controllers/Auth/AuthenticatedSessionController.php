@@ -30,11 +30,11 @@ class AuthenticatedSessionController extends Controller
 
         // $token = $request->user()->createToken($request->user()->email . '_Auth_Token')->plainTextToken;
 
-        if ($request->user()->usertype == 'admin') {
-            return redirect('admin');
-        }
+        // if ($request->user()->usertype == 'admin') {
+        //     return redirect('admin');
+        // }
 
-        return redirect()->intended(route('dashboard', absolute: false));
+        return redirect()->intended(route('home', absolute: false));
     }
 
     /**
@@ -53,6 +53,6 @@ class AuthenticatedSessionController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
     
-        return redirect('login');
+        return redirect('home');
     }
 }

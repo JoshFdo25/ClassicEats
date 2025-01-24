@@ -12,6 +12,9 @@
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap-grid.min.css" integrity="sha512-i1b/nzkVo97VN5WbEtaPebBG8REvjWeqNclJ6AItj7msdVcaveKrlIIByDpvjk5nwHjXkIqGZscVxOrTb9tsMA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Playwrite+CU:wght@100..400&display=swap" rel="stylesheet">
 
         <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -29,9 +32,13 @@
             }
         </script>
     </head>
-    <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-200 dark:bg-stone-900">
-            @include('layouts.navigation')
+    <body class="font-sans antialiased bg-gray-200 dark:bg-stone-900">
+        <div class="min-h-screen">
+            @if (Auth::guard('admin')->check())
+                @include('layouts.admin-navigation')
+            @else
+                @include('layouts.user-navigation')
+            @endif
 
             <!-- Page Heading -->
             @isset($header)
@@ -46,6 +53,10 @@
             <main>
                 {{ $slot }}
             </main>
+
+            <footer class="bg-white dark:bg-stone-800 text-gray-600 dark:text-gray-300 py-4 text-center">
+                <p>&copy; {{ now()->year }} {{ config('app.name', env('APP_NAME')) }}. All rights reserved.</p>
+            </footer>
         </div>
         <script>
             @if (Session::has('success'))

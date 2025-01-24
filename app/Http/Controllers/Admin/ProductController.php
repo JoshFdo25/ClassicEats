@@ -35,10 +35,10 @@ class ProductController extends Controller
             'name' =>'required|max:50',
             'description' =>'required|string',
             'ingredients' =>'required|string',
-            'quantity' => 'required|integer|min:1',
             'category_id' => 'required|exists:categories,id',
             'price' => 'required|numeric|min:0',
             'image' =>'required|image|mimes:jpeg,png,jpg,webp|max:2048',
+            'status' => 'boolean',
         ]);
 
         if ($request->hasFile('image')) {
@@ -49,10 +49,10 @@ class ProductController extends Controller
             'name' => $request->name,
             'description' => $request->description,
             'ingredients' => $request->ingredients,
-            'quantity' => $request->quantity,
             'category_id' => $request->category_id,
             'price' => $request->price,
             'image' => $imagePath,
+            'status' => $request->has('status') ? $request->status : true,
         ]);
 
         if ($product) {
@@ -62,6 +62,7 @@ class ProductController extends Controller
         }
 
     }
+    
 
     public function edit($id) {
 
@@ -71,18 +72,19 @@ class ProductController extends Controller
         return view('admin.product.update', compact('products', 'categories'));
     }
 
+
     public function update(Request $request, $id) {
 
         $product = Product::findOrFail($id);
 
         $request->validate([
-            'name' =>'required|max:50',
-            'description' =>'required|string',
-            'ingredients' =>'required|string',
-            'quantity' => 'required|integer|min:1',
+            'name' => 'required|max:50',
+            'description' => 'required|string',
+            'ingredients' => 'required|string',
             'category_id' => 'required|exists:categories,id',
             'price' => 'required|numeric|min:0',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
+            'status' => 'boolean',
         ]);
 
         if ($request->hasFile('image')) {
@@ -95,10 +97,10 @@ class ProductController extends Controller
             'name' => $request->name,
             'description' => $request->description,
             'ingredients' => $request->ingredients,
-            'quantity' => $request->quantity,
             'category_id' => $request->category_id,
             'price' => $request->price,
             'image' => $imagePath,
+            'status' => $request->status,
         ]);
 
         if ($product) {
@@ -108,6 +110,16 @@ class ProductController extends Controller
         }
 
     }
+
+
+    public function toggleStatus($id)
+    {
+        $product = Product::findOrFail($id);
+        $product->update(['status' => !$product->status]);
+
+        return back()->with('success', 'Product availability updated.');
+    }
+
 
     public function delete($id) {
 

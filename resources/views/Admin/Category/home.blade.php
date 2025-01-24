@@ -4,9 +4,9 @@
             {{ __('Categories') }}
         </h2>
     </x-slot>
-    <div class="py-12">
+    <div class="py-12 sm:px-4 px-2">
         <div class="max-w-4xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-stone-800 overflow-hidden shadow-lg sm:rounded-lg">
+            <div class="bg-white dark:bg-stone-800 overflow-hidden shadow-lg rounded-lg">
                 <div class="flex items-center justify-between p-6 text-gray-900 dark:text-gray-100 border-b border-gray-200 dark:border-gray-700">
                     <h1 class="text-2xl font-semibold">Category List</h1>
                     <x-custom-button-1 href="{{ route('admin.categories.create') }}">
@@ -16,14 +16,14 @@
                         Add Category
                     </x-custom-button-1>
                 </div>
-                <div class="p-4 space-y-4">
+                <div class="sm:p-8 p-7 space-y-4">
                     @if($categories->isEmpty())
                         <div class="text-center text-gray-600 dark:text-gray-300 py-6">
                             <p class="text-lg font-semibold">No categories found</p>
                             <p class="text-sm">Start by adding new categories to the list.</p>
                         </div>
                     @else
-                        <div class="max-h-128 overflow-auto sm:rounded-lg mt-4">
+                        <div class="max-h-128 overflow-auto rounded-lg mt-4">
                             <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                                 <thead class="sticky top-0 text-xs text-gray-700 uppercase shadow-md dark:shadow-stone-800
                                 bg-gray-200 dark:bg-gray-900 dark:text-gray-400">

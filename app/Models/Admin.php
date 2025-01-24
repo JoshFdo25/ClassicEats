@@ -8,13 +8,14 @@ use Laravel\Sanctum\HasApiTokens;
 use MongoDB\Laravel\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable
+class Admin extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable, HasApiTokens;
 
     protected $connection = 'mongodb';
-    protected $collection = 'users';
+    protected $collection = 'admins';
+    protected $guard = 'admin';
 
     /**
      * The attributes that are mass assignable.
@@ -49,10 +50,5 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
-    }
-
-    public function cart()
-    {
-        return $this->hasOne(Cart::class);
     }
 }

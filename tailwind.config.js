@@ -13,6 +13,7 @@ export default {
         extend: {
             spacing: {
                 '128': '32rem',
+                '5': '1.2rem',
             },
 
             transitionDuration: {
