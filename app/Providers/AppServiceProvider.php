@@ -6,6 +6,7 @@ use App\Models\Sanctum\PersonalAccessToken;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Sanctum\Sanctum;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\URL;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -23,6 +24,10 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Sanctum::usePersonalAccessTokenModel(PersonalAccessToken::class);
+
+        if (env('APP_ENV') !== 'local') {
+            URL::forceScheme('https');
+        }
 
         View::composer('*', function ($view) {
             $totalCartItems = auth()->check()
