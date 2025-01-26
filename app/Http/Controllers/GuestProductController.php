@@ -15,17 +15,17 @@ class GuestProductController extends Controller
             return redirect()->route('admin.products');
         } elseif (Auth::check()) {
             $categories = Category::with('products')->orderBy('name')->get();
-            return view('guest.productspage.products', compact('categories'));
+            return view('Guest.ProductsPage.products', compact('categories'));
         }
 
         $categories = Category::with('products')->orderBy('name')->get();
-        return view('guest.productspage.products', compact('categories'));
+        return view('Guest.ProductsPage.products', compact('categories'));
 
     }
 
     public function show($id)
     {
         $product = Product::with('category')->findOrFail($id);
-        return view('guest.productspage.product', compact('product'));
+        return view('Guest.ProductsPage.product', compact('product'));
     }
 }

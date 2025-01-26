@@ -19,14 +19,14 @@ class ProductController extends Controller
 
         $products = Product::orderBy('id', 'desc')->get();
         $total = Product::count();
-        return view('admin.product.home', compact('products', 'total'));
+        return view('Admin.Product.home', compact('products', 'total'));
     }
 
     public function create() {
 
         $categories = Category::all();
 
-        return view('admin.product.create', compact('categories'));
+        return view('Admin.Product.create', compact('categories'));
     }
 
     public function save(Request $request) {
@@ -69,7 +69,7 @@ class ProductController extends Controller
         $categories = Category::all();
 
         $products = Product::findOrFail($id);
-        return view('admin.product.update', compact('products', 'categories'));
+        return view('Admin.Product.update', compact('products', 'categories'));
     }
 
 

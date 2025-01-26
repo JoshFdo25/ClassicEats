@@ -18,11 +18,11 @@ class CategoryController extends Controller
     public function index() {
         $categories = Category::orderBy('id', 'desc')->get();
         $total = Category::count();
-        return view('admin.category.home', compact('categories', 'total'));
+        return view('Admin.Category.home', compact('categories', 'total'));
     }
 
     public function create() {
-        return view('admin.category.create');
+        return view('Admin.Category.create');
     }
 
     public function save(Request $request) {
@@ -52,7 +52,7 @@ class CategoryController extends Controller
     public function edit($id) {
 
         $categories = Category::findOrFail($id);
-        return view('admin.category.update', compact('categories'));
+        return view('Admin.Category.update', compact('categories'));
     }
 
     public function update(Request $request, $id) {

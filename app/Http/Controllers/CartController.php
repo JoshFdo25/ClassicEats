@@ -61,7 +61,7 @@ class CartController extends Controller
     public function viewCart()
     {
         $cart = auth()->user()->cart;
-        return view('guest.cart', compact('cart'));
+        return view('Guest.cart', compact('cart'));
     }
 
     public function updateCart(Request $request, $cartItemId)
@@ -116,6 +116,6 @@ class CartController extends Controller
             $cart->items()->delete();
         }
 
-        return view('guest.success');
+        return view('Guest.success');
     }
 }

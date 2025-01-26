@@ -17,11 +17,11 @@ class HomeController extends Controller
             return redirect()->route('admin.products');
         } elseif (Auth::check()) {
             $categories = Category::all();
-            return view('guest.home', compact('categories'));
+            return view('Guest.home', compact('categories'));
         }
 
         $categories = Category::all();
-        return view('guest.home', compact('categories'));
+        return view('Guest.home', compact('categories'));
     }
 
     public function contactIndex() 
@@ -29,9 +29,9 @@ class HomeController extends Controller
         if (Auth::guard('admin')->check()) {
             return redirect()->route('admin.products');
         } elseif (Auth::check()) {
-            return view('guest.contact-us');
+            return view('Guest.contact-us');
         }
-        return view('guest.contact-us');
+        return view('Guest.contact-us');
     }
 
     public function submit(Request $request)
