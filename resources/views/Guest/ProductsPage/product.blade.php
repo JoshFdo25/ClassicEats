@@ -22,12 +22,12 @@
                     <p class="text-gray-400 mb-4">{{ $product->description }}</p>
                     <p class="mb-2"><strong>Ingredients:</strong> {{ $product->ingredients }}</p>
                     <p class="mb-2"><strong>Category:</strong> {{ $product->category->name }}</p>
-                    <p class="mb-2"><strong>Price:</strong> ${{ number_format($product->price, 2) }}</p>
+                    <p class="mb-2"><strong>Price:</strong> Rs. {{ number_format($product->price, 2) }}</p>
                     <!-- Availability Badge -->
                     <span class="text-sm 
                         {{ $product->status ? 'text-green-500' : 'text-red-500' }} 
                         font-semibold">
-                        {{ $product->status ? 'Available' : 'Out of Stock' }}
+                        {{ $product->status ? 'Available' : 'Not available' }}
                     </span>
                     <form action="{{ route('cart.add', $product->id) }}" method="POST">
                         @csrf

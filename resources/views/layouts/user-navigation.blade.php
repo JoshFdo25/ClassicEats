@@ -1,4 +1,4 @@
-<nav id="nav" x-data="{ open: false }" class="sticky top-0 z-10 bg-gradient-to-r from-[#002387] to-[#001147] shadow-lg p-1 transition-all duration-300">
+<nav id="nav" x-data="{ open: false }" class="sticky top-0 z-20 bg-gradient-to-r from-[#002387] to-[#001147] shadow-lg p-1 transition-all duration-300">
     <!-- Primary Navigation -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="relative flex justify-between items-center h-16">
@@ -24,9 +24,9 @@
                         {{ request()->routeIs('products.index') ? 'bg-[#001147] text-white font-semibold' : 'text-white hover:text-[#002147] hover:scale-105' }}">
                     Products
                 </a>
-                <a href="#"
+                <a href="{{ route('contact-us') }}"
                 class="px-3 py-1 rounded-full transition-all duration-300 transform
-                        {{ request()->routeIs('admin.categories') ? 'bg-[#001147] text-white font-semibold' : 'text-white hover:text-[#002147] hover:scale-105' }}">
+                        {{ request()->routeIs('contact-us') ? 'bg-[#001147] text-white font-semibold' : 'text-white hover:text-[#002147] hover:scale-105' }}">
                     Contact us
                 </a>
             </div>
@@ -93,6 +93,17 @@
                     </a>
                     @endif
 
+                    <a href="{{ route('cart.index') }}" class="relative bg-gray-500 hover:bg-gray-700 p-2.5 rounded-full text-white">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.263-12m16.356 0a1.125 1.125 0 0 0-1.119-1.007H5.119a1.125 1.125 0 0 0-1.119 1.007m3.75 4.493h10.5m-8.25 4.5h6m-8.25 4.5h6" />
+                        </svg>
+                        @if($totalCartItems > 0)
+                            <span class="absolute -top-1 -right-1 bg-red-500 text-white rounded-full text-xs w-5 h-5 flex items-center justify-center">
+                                {{ $totalCartItems }}
+                            </span>
+                        @endif
+                    </a>
+
                     <!-- Dark/Light Mode Button -->
                     <button id="theme-toggle" type="button" class="text-white hover:bg-gray-700 bg-gray-500 p-2.5 rounded-full transition-all duration-200">
                         <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 transform hover:scale-125" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
@@ -157,6 +168,11 @@
            class="block px-4 py-2 rounded-md transition
                   {{ request()->routeIs('profile.edit') ? 'bg-[#001147] text-gray-100 font-semibold' : 'text-gray-800 dark:text-gray-200 hover:bg-indigo-300 dark:hover:bg-blue-800' }}">
             Profile
+        </a>
+        <a href="{{ route('cart.index') }}"
+            class="block px-4 py-2 rounded-md transition
+            {{ request()->routeIs('profile.edit') ? 'bg-[#001147] text-gray-100 font-semibold' : 'text-gray-800 dark:text-gray-200 hover:bg-indigo-300 dark:hover:bg-blue-800' }}">
+            Cart
         </a>
         <form method="POST" action="{{ route('logout') }}" class="block">
             @csrf

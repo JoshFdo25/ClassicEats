@@ -31,6 +31,8 @@
                 document.documentElement.classList.remove('dark')
             }
         </script>
+
+        @livewireStyles
     </head>
     <body class="font-sans antialiased bg-gray-200 dark:bg-stone-900">
         <div class="min-h-screen">
@@ -155,5 +157,6 @@
                 });
             }
         </script>
+        @livewireScripts
     </body>
 </html>

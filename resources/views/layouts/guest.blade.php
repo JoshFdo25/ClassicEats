@@ -23,6 +23,7 @@
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @livewireStyles
 </head>
 <body class="font-sans text-gray-900 antialiased">
 
@@ -85,5 +86,6 @@
         initializeTheme();
         themeToggle.addEventListener('click', toggleTheme);
     </script>
+    @livewireScripts
 </body>
 </html>

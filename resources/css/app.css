@@ -30,6 +30,15 @@
     border: 2px solid rgba(255, 255, 255, 0.5); /* Glow effect on hover */
 }
 
+.scrollbar-hidden::-webkit-scrollbar {
+    display: none;
+}
+
+.scrollbar-hidden {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+
 /* Smooth transition when scrolling */
 html {
     scroll-behavior: smooth;

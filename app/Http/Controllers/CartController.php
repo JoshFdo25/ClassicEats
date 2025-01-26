@@ -14,18 +14,19 @@ class CartController extends Controller
     {
         $product = Product::findOrFail($productId);
     
-        if ($product->quantity < 1) {
-            return back()->with('error', 'Product is out of stock.');
+        if ($product->status === false) {
+            return $request->wantsJson()
+                ? response()->json(['error' => 'Product is out of stock.'], 400)
+                : back()->with('error', 'Product is out of stock.');
         }
-
-        // Proceed with adding to cart for authenticated users
+    
         if (auth()->check()) {
             $cart = auth()->user()->cart()->firstOrCreate([
                 'user_id' => auth()->id(),
             ]);
-        
+    
             $cartItem = $cart->items()->where('product_id', $productId)->first();
-        
+    
             if ($cartItem) {
                 $cartItem->update([
                     'quantity' => min($cartItem->quantity + 1, $product->quantity),
@@ -36,10 +37,15 @@ class CartController extends Controller
                     'quantity' => 1,
                 ]);
             }
-        
-            return back()->with('success', 'Product added to cart.');
+    
+            // Calculate total cart items
+            $totalItems = $cart->items()->sum('quantity');
+    
+            return $request->wantsJson()
+                ? response()->json(['success' => 'Product added to cart.', 'totalItems' => $totalItems])
+                : back()->with(['success' => 'Product added to cart.', 'totalItems' => $totalItems]);
         }
-
+    
         return back()->with('error', 'Please log in to add items to your cart.');
     }
 
@@ -61,15 +67,13 @@ class CartController extends Controller
     public function updateCart(Request $request, $cartItemId)
     {
         $cartItem = CartItem::findOrFail($cartItemId);
-
-        $product = $cartItem->product;
-
+    
         $validated = $request->validate([
-            'quantity' => "required|integer|min:1|max:{$product->quantity}",
+            'quantity' => 'required|integer|min:1|max:6',
         ]);
-
+    
         $cartItem->update($validated);
-
+    
         return response()->json(['success' => true]);
     }
 
@@ -89,7 +93,7 @@ class CartController extends Controller
             Stripe::setApiKey(config('services.stripe.secret'));
     
             $paymentIntent = PaymentIntent::create([
-                'amount' => $totalAmount * 100, // Stripe accepts amounts in cents
+                'amount' => $totalAmount * 100,
                 'currency' => 'lkr',
                 'metadata' => ['user_id' => auth()->id()],
             ]);
@@ -104,16 +108,14 @@ class CartController extends Controller
         }
     }
 
-    public function completeCheckout(Request $request)
+    public function checkoutSuccess()
     {
         $cart = auth()->user()->cart;
 
         if ($cart) {
             $cart->items()->delete();
-            $cart->delete();
         }
 
-        return response()->json(['success' => true]);
+        return view('guest.success');
     }
-
 }

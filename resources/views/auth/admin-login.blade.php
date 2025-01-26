@@ -3,7 +3,7 @@
     <div class="flex justify-center mb-6">
         <div class="flex items-center gap-2 md:flex-none">
             <span class="text-transparent font-playwrite-cu bg-clip-text bg-gradient-to-r from-blue-500 to-blue-900 text-2xl font-extrabold">ClassicEats</span>
-            <span class="md:block mb-4 text-sm text-white">Admin Panel</span>
+            <span class="md:block mb-4 text-sm text-black dark:text-white">Admin Panel</span>
         </div>
     </div>
 

@@ -1,5 +1,9 @@
 <x-app-layout>
-    <div class="container mx-auto p-6">
+    <div class="flex fixed w-full z-50 p-2 items-center justify-center">
+        <livewire:product-search>
+    </div>
+
+    <div class="container mx-auto pt-20 p-6">
         @forelse ($categories as $category)
             <section class="mb-10">
                 <header>
@@ -21,13 +25,13 @@
                                     <h3 class="text-lg font-bold text-gray-900 dark:text-gray-100">{{ $product->name }}</h3>
                                     <p class="text-gray-600 dark:text-gray-300">{{ Str::limit($product->description, 50) }}</p>
                                     <p class="mt-2 text-gray-800 dark:text-gray-200">
-                                        <strong>Price:</strong> ${{ number_format($product->price, 2) }}
+                                        <strong>Price:</strong> Rs. {{ number_format($product->price, 2) }}
                                     </p>
                                     <!-- Availability Badge -->
                                     <span class="text-sm 
                                         {{ $product->status ? 'text-green-500' : 'text-red-500' }} 
                                         font-semibold">
-                                        {{ $product->status ? 'Available' : 'Out of Stock' }}
+                                        {{ $product->status ? 'Available' : 'Not available' }}
                                     </span>
                                 </div>
                             </a>
