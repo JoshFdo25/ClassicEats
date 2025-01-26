@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('name', 50);
             $table->text('description');
             $table->text('ingredients');
-            $table->boolean('status')->default(true)->after('quantity'); // true for available, false for not available
+            $table->boolean('status')->default(true); // true for available, false for not available
             $table->decimal('price', 10, 2);
             $table->unsignedBigInteger('category_id');
             $table->timestamps();

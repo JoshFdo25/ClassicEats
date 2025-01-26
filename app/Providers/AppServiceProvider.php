@@ -30,9 +30,16 @@ class AppServiceProvider extends ServiceProvider
         }
 
         View::composer('*', function ($view) {
-            $totalCartItems = auth()->check()
-                ? auth()->user()->cart->items->sum('quantity')
-                : 0;
+            $totalCartItems = 0;
+    
+            if (auth()->check()) {
+                $cart = auth()->user()->cart;
+    
+                // Check if cart exists
+                if ($cart) {
+                    $totalCartItems = $cart->items->sum('quantity');
+                }
+            }
     
             $view->with('totalCartItems', $totalCartItems);
         });

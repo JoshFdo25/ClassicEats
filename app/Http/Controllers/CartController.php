@@ -29,7 +29,7 @@ class CartController extends Controller
     
             if ($cartItem) {
                 $cartItem->update([
-                    'quantity' => min($cartItem->quantity + 1, $product->quantity),
+                    'quantity' => min($cartItem->quantity + 1, 6),
                 ]);
             } else {
                 $cart->items()->create([
@@ -98,7 +98,7 @@ class CartController extends Controller
                 'metadata' => ['user_id' => auth()->id()],
             ]);
     
-            return view('guest.checkout', [
+            return view('Guest.checkout', [
                 'clientSecret' => $paymentIntent->client_secret,
                 'totalAmount' => $totalAmount,
             ]);
