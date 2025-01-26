@@ -9,3 +9,5 @@ export default defineConfig({
         }),
     ],
 });
+
+// vite.config.js
