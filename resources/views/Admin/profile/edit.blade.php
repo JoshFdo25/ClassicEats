@@ -11,7 +11,7 @@
                 <div class="space-y-6 lg:col-span-2">
                     <div class="p-4 sm:p-8 bg-white dark:bg-stone-800 shadow sm:rounded-lg">
                         <div class="max-w-xl">
-                            @include('admin.profile.partials.update-profile-information-form')
+                            @include('Admin.profile.partials.update-profile-information-form')
                         </div>
                     </div>
 
