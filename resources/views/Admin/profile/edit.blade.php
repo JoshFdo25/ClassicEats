@@ -18,7 +18,7 @@
                     <div>
                         <div class="p-4 sm:p-8 bg-white dark:bg-stone-800 shadow sm:rounded-lg">
                             <div class="max-w-xl">
-                                @include('admin.profile.partials.delete-user-form')
+                                @include('Admin.profile.partials.delete-user-form')
                             </div>
                         </div>
                     </div>
@@ -26,7 +26,7 @@
 
                 <div class="p-4 sm:p-8 bg-white dark:bg-stone-800 shadow sm:rounded-lg">
                     <div class="max-w-xl">
-                        @include('admin.profile.partials.update-password-form')
+                        @include('Admin.profile.partials.update-password-form')
                     </div>
                 </div>
             </div>
