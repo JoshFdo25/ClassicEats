@@ -84,12 +84,11 @@ class CategoryController extends Controller
 
     public function delete($id) {
 
-        $category = Category::findOrFail($id);
+        $category = Category::findOrFail($id)->delete();
 
-        if ($category->delete()) {
+        if ($category) {
             return redirect()->route('admin.category.home')->with('success', 'Category deleted successfully');
         } else {
-            Session::flash('error', 'Failed to delete category');
             return redirect()->route('admin.category.home')->with('error', 'Failed to delete category');
         }
 
