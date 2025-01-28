@@ -1,24 +1,22 @@
 <x-app-layout>
-    <!-- Hero Section -->
     <div class="relative bg-cover bg-center h-64 sm:h-72 md:h-[50vh] lg:h-[60vh] rounded-bl-xl rounded-br-xl overflow-hidden"
-         style="background-image: url('{{ asset('./storage/home_images/contact-banner-image.jpg') }}');">
+         style="background-image: url('{{ asset('./storage/home_images/contact-banner-image.jpg') }}');"
+         loading="lazy">
         <div class="absolute inset-0 bg-black bg-opacity-55 flex items-center justify-center">
             <div class="text-center text-white px-4">
                 <h1 class="text-base sm:text-2xl md:text-4xl font-bold mb-2 font-playwrite-cu">
                     Get in Touch with Us
                 </h1>
                 <p class="text-xs sm:text-sm md:text-lg">
-                    "We’re here to make your Classic Eats experience even better!"
+                    "We're here to make your Classic Eats experience even better!"
                 </p>
             </div>
         </div>
     </div>
 
-    <!-- Contact Information Section -->
     <div class="p-4 sm:p-6 md:p-10">
         <div class="bg-white dark:bg-stone-800 rounded-2xl shadow-md p-5 lg:px-20 lg:py-10">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <!-- Contact Details -->
                 <div class="flex flex-col gap-6">
                     <div class="flex items-center gap-4">
                         <div class="bg-blue-950 rounded-xl p-3 text-white flex-shrink-0">
@@ -35,7 +33,7 @@
                                 Our friendly team is here to help.
                             </p>
                             <a href="mailto:foodandbeverages@classiceats.com" class="text-blue-600 hover:underline text-sm">
-                                foodandbeverages@classiceats.com
+                                info@classiceats.com
                             </a>
                         </div>
                     </div>
@@ -76,7 +74,6 @@
                     </div>
                 </div>
 
-                <!-- Map Section -->
                 <div>
                     <iframe 
                         class="rounded-xl w-full h-64 sm:h-72 md:h-full shadow-md"
@@ -91,7 +88,6 @@
         </div>
     </div>
 
-    <!-- Contact Form Section -->
     <div class="p-4 sm:p-6 md:p-10">
         <div class="bg-white dark:bg-stone-800 rounded-2xl shadow-md p-5 lg:px-20 lg:py-10">
             <h2 class="text-base sm:text-lg md:text-xl font-bold text-center text-black dark:text-white mb-6">
@@ -120,10 +116,9 @@
                               placeholder="Your Message" required></textarea>
                 </div>
                 <div class="flex justify-center">
-                    <button type="submit" 
-                            class="px-5 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md shadow-sm">
+                    <x-custom-button-1 type="submit" class="px-5 py-2 rounded-md shadow-sm">
                         Send Message
-                    </button>
+                    </x-custom-button-1>
                 </div>
             </form>
         </div>

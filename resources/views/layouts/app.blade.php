@@ -56,9 +56,13 @@
                 {{ $slot }}
             </main>
 
-            <footer class="bg-white dark:bg-stone-800 text-gray-600 dark:text-gray-300 py-4 text-center">
-                <p>&copy; {{ now()->year }} {{ config('app.name', env('APP_NAME')) }}. All rights reserved.</p>
-            </footer>
+            @if (Auth::guard('admin')->check())
+                <footer class="bg-white dark:bg-stone-800 text-gray-600 dark:text-gray-300 py-4 text-center">
+                    <p>&copy; {{ now()->year }} {{ config('app.name', env('APP_NAME')) }}. All rights reserved.</p>
+                </footer>
+            @else
+                @include('layouts.footer')
+            @endif
         </div>
         <script>
             @if (Session::has('success'))

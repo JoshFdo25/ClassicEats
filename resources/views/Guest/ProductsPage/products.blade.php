@@ -19,6 +19,7 @@
                                     <img 
                                         src="{{ asset('storage/' . $product->image) }}" 
                                         alt="Image of {{ $product->name }}" 
+                                        loading="lazy"
                                         class="w-full h-40 object-cover transition-transform group-hover:scale-105">
                                 </div>
                                 <div class="p-4">

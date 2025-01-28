@@ -39,7 +39,7 @@
                                         <tr class="bg-white border-b dark:bg-stone-700 hover:bg-gray-100 dark:hover:bg-stone-600">
                                             <td class="px-6 py-4">{{ $loop->iteration }}</td>
                                             <td class="px-6 py-4">
-                                                <img src="{{ Storage::url($category->image) }}" alt="{{ $category->name }}"
+                                                <img src="{{ Storage::url($category->image) }}" alt="{{ $category->name }}" loading="lazy"
                                                     class="w-20 h-20 object-cover rounded shadow-md">
                                             </td>
                                             <td class="px-6 py-4 font-medium text-gray-900 dark:text-gray-100">

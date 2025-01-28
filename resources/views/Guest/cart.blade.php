@@ -37,7 +37,7 @@
                                     <td class="py-3 px-4 text-right">Rs. {{ number_format($item->product->price, 2) }}</td>
                                     <td class="py-3 px-4 text-right">Rs. {{ number_format($item->product->price * $item->quantity, 2) }}</td>
                                     <td class="py-3 px-4 text-right">
-                                        <form action="{{ route('cart.remove', $item->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to remove this item?');">
+                                        <form action="{{ route('cart.remove', $item->id) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="px-4 py-2 bg-red-600 text-white font-medium rounded hover:bg-red-500">

@@ -2,7 +2,6 @@
     <!-- Primary Navigation -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="relative flex justify-between items-center h-16">
-            <!-- Logo Section -->
             <div class="flex-shrink-0">
                 <a href="{{  route('home') }}" class="flex items-center gap-2 md:flex-none">
                     <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 48 48" class="w-10 h-10" style="fill:#FFFFFF;">
@@ -12,7 +11,6 @@
                 </a>
             </div>
 
-            <!-- Desktop Menu -->
             <div class="absolute left-1/2 transform -translate-x-1/2 hidden md:flex space-x-5 items-center bg-gray-500 rounded-full p-1">
                 <a href="{{ route('home') }}"
                 class="px-3 py-1 rounded-full transition-all duration-300 transform
@@ -31,10 +29,8 @@
                 </a>
             </div>
 
-            <!-- Profile and Toggle -->
             <div class="flex items-center space-x-4">
                 <div class="hidden md:flex relative items-center space-x-4">
-                    <!-- Profile -->
                     @if(Auth::check())
                         <x-dropdown align="right" width="48">
                             <x-slot name="trigger">
@@ -134,10 +130,10 @@
                   {{ request()->routeIs('products.index') ? 'bg-[#001147] text-gray-100 font-semibold' : 'text-gray-800 dark:text-gray-200 hover:bg-indigo-300 dark:hover:bg-blue-800' }}">
             Products
         </a>
-        <a href="{#"
+        <a href="{{ route('contact-us') }}"
            class="block px-4 py-2 rounded-md transition
-                  {{ request()->routeIs('admin.categories') ? 'bg-[#001147] text-gray-100 font-semibold' : 'text-gray-800 dark:text-gray-200 hover:bg-indigo-300 dark:hover:bg-blue-800' }}">
-            Categories
+                  {{ request()->routeIs('contact-us') ? 'bg-[#001147] text-gray-100 font-semibold' : 'text-gray-800 dark:text-gray-200 hover:bg-indigo-300 dark:hover:bg-blue-800' }}">
+            Contact us
         </a>
         <hr class="mr-2 ml-2 mt-0.5 mb-0.5 bg-gray-600 dark:bg-gray-900">
         <div class="flex items-center justify-between px-4 py-2">
@@ -145,7 +141,6 @@
                 <span class="text-gray-800 dark:text-gray-200">Light/Dark Theme</span>
                 <div class="relative flex items-center">
                     <input type="checkbox" id="mobile-theme-toggle" class="sr-only peer">
-                    <!-- Toggle Background -->
                     <div class="w-11 h-6 bg-gray-700 items-center justify-center peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-gray-500 dark:peer-focus:ring-white rounded-full peer dark:bg-gray-400 peer-checked:bg-fray-600 relative">
                         <span class="absolute inset-y-0 right-0 flex items-center justify-center text-yellow-500 transition-all peer-checked:translate-x-full">
                             <svg id="theme-toggle-dark-icon" class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">

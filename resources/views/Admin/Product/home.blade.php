@@ -46,16 +46,16 @@
                                     <tr class="bg-white border-b dark:bg-stone-700 hover:bg-gray-100 dark:hover:bg-stone-600">
                                         <td class="px-6 py-4">{{ $loop->iteration }}</td>
                                         <td class="px-6 py-4">
-                                            <img src="{{ Storage::url($product->image) }}" alt="{{ $product->product_name }}"
-                                                class="w-20 h-20 object-cover rounded shadow-md">
+                                            <img src="{{ Storage::url($product->image) }}" alt="{{ $product->product_name }}" loading="lazy"
+                                            class="w-20 h-20 object-cover rounded shadow-md">
                                         </td>
                                         {{-- <td class="px-6 py-4">{{ $product->id }}</td> --}}
                                         <td class="px-6 py-4 font-medium text-gray-900 dark:text-gray-100">
                                             {{ $product->name }}
                                         </td>
                                         <td class="px-6 py-4">{{ $product->category->name }}</td>
-                                        <td class="px-6 py-4">{{ $product->description }}</td>
-                                        <td class="px-6 py-4">{{ $product->ingredients }}</td>
+                                        <td class="px-6 py-4">{{ Str::limit($product->description, 60) }}</td>
+                                        <td class="px-6 py-4">{{ Str::limit($product->ingredients, 60) }}</td>
                                         <td class="px-6 py-4">
                                             <form action="{{ route('admin.products.toggleStatus', $product->id) }}" method="POST">
                                                 @csrf
