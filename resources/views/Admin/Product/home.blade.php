@@ -36,7 +36,7 @@
                                         <th scope="col" class="px-6 py-3">Category</th>
                                         <th scope="col" class="px-6 py-3">Description</th>
                                         <th scope="col" class="px-6 py-3">Ingredients</th>
-                                        <th scope="col" class="px-6 py-3">Quantity</th>
+                                        <th scope="col" class="px-6 py-3">Availability</th>
                                         <th scope="col" class="px-6 py-3">Price</th>
                                         <th colspan="2" class="px-6 py-3">Actions</th>
                                     </tr>

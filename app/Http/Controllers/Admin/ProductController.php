@@ -45,11 +45,14 @@ class ProductController extends Controller
             $imagePath = $request->file('image')->store('product_images', 'public');
         }
 
+        $category = Category::findOrFail($request->category_id);
+
         $product = Product::create([
             'name' => $request->name,
             'description' => $request->description,
             'ingredients' => $request->ingredients,
             'category_id' => $request->category_id,
+            'category_name' => $category->name,
             'price' => $request->price,
             'image' => $imagePath,
             'status' => $request->has('status') ? $request->status : true,
@@ -93,14 +96,17 @@ class ProductController extends Controller
             $imagePath = $product->image;
         }
 
+        $category = Category::findOrFail($request->category_id);
+
         $product->update([
             'name' => $request->name,
             'description' => $request->description,
             'ingredients' => $request->ingredients,
             'category_id' => $request->category_id,
+            'category_name' => $category->name,
             'price' => $request->price,
             'image' => $imagePath,
-            'status' => $request->status,
+            'status' => $request->has('status') ? $request->status : $product->status,
         ]);
 
         if ($product) {

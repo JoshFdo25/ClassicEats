@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Category;
+use App\Models\Product;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -84,12 +85,14 @@ class CategoryController extends Controller
 
     public function delete($id) {
 
-        $category = Category::findOrFail($id)->delete();
+        $category = Category::findOrFail($id);
 
-        if ($category) {
-            return redirect()->route('admin.category.home')->with('success', 'Category deleted successfully');
+        Product::where('category_id', $category->id)->delete();
+
+        if ($category->delete()) {
+            return back()->with('success', 'Category deleted successfully');
         } else {
-            return redirect()->route('admin.category.home')->with('error', 'Failed to delete category');
+            return back()->with('error', 'Failed to delete category');
         }
 
     }

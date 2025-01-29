@@ -20,6 +20,7 @@ return new class extends Migration
             $table->boolean('status')->default(true); // true for available, false for not available
             $table->decimal('price', 10, 2);
             $table->unsignedBigInteger('category_id');
+            $table->string('category_name', 255);
             $table->timestamps();
 
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');

@@ -18,7 +18,8 @@ class Product extends Model
         'ingredients', 
         'price', 
         'image', 
-        'category_id', 
+        'category_id',
+        'category_name', 
         'status',
     ];
     

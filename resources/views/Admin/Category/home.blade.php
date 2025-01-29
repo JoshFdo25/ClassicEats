@@ -65,7 +65,8 @@
                                                         style="top: 0; left: 0; right: 0; bottom: 0; margin: 0;">
                                                         <div class="bg-white rounded-lg p-6 shadow-lg w-96">
                                                             <h2 class="text-xl font-semibold text-gray-800">Confirm Delete</h2>
-                                                            <p class="text-sm text-gray-600 mt-4">Are you sure you want to delete this category? This action cannot be undone.</p>
+                                                            <p class="text-sm text-gray-800 mt-2">Are you sure you want to delete this category?</p>
+                                                            <span>This will also delete all the products under this category and this action cannot be undone.</span>
                                                             <div class="flex justify-end mt-6">
                                                                 <button
                                                                     @click="showDeleteModal = false"
