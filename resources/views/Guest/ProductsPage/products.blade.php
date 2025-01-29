@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class="flex fixed w-full z-50 p-2 items-center justify-center">
+    <div class="flex fixed w-full z-10 p-2 items-center justify-center">
         <livewire:product-search>
     </div>
 

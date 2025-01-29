@@ -26,11 +26,11 @@
         <h2 class="text-center text-lg sm:text-xl md:text-2xl font-bold text-black dark:text-white mb-4">Categories</h2>
         <div class="relative max-w-5xl justify-center mx-auto overflow-hidden">
 
-            <div class="absolute inset-y-0 left-0 w-12 bg-gradient-to-r from-white dark:from-stone-900 to-transparent z-10 pointer-events-none"></div>
+            <div class="absolute inset-y-0 left-0 w-12 bg-gradient-to-r from-gray-200 dark:from-stone-900 to-transparent z-10 pointer-events-none"></div>
 
             <div id="scrolling-container" class="flex gap-4 justify-center overflow-x-auto scrollbar-hidden whitespace-nowrap px-4 py-2">
                 @foreach ($categories as $category)
-                    <div class="relative flex-shrink-0 w-48 h-48 bg-white dark:bg-stone-800 shadow-lg rounded-xl overflow-hidden hover:shadow-xl transition transform hover:scale-105">
+                    <div class="relative flex-shrink-0 w-48 h-48 bg-white dark:bg-stone-800 shadow-md rounded-xl overflow-hidden hover:shadow-xl transition transform hover:scale-105">
                         <img src="{{ Storage::url($category->image) }}" alt="{{ $category->name }}" loading="lazy"
                             class="absolute inset-0 w-full h-full object-cover">
                         <div class="absolute inset-0 bg-black bg-opacity-55 flex items-center justify-center">
@@ -41,7 +41,7 @@
                     </div>
                 @endforeach
             </div>
-            <div class="absolute inset-y-0 right-0 w-12 bg-gradient-to-l from-white dark:from-stone-900 to-transparent z-10 pointer-events-none"></div>
+            <div class="absolute inset-y-0 right-0 w-12 bg-gradient-to-l from-gray-200 dark:from-stone-900 to-transparent z-10 pointer-events-none"></div>
         </div>
     </div>
 
