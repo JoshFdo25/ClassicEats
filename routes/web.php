@@ -48,7 +48,7 @@ Route::prefix('admin')->middleware(['auth:admin'])->group(function () {
     Route::delete('/profile', [AdminProfileController::class, 'destroy'])->name('admin.profile.destroy');
 
     // Admin landing page route
-    Route::get('/', [ProductController::class, 'index'])->name('admin.products');
+    Route::get('/', [ProductController::class, 'index']);
 
     // Product routes
     Route::get('products', [ProductController::class, 'index'])->name('admin.products');
