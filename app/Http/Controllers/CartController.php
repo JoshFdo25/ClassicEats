@@ -84,7 +84,13 @@ class CartController extends Controller
         if (!$cart || $cart->items->isEmpty()) {
             return back()->with('error', 'Your cart is empty.');
         }
-    
+
+        foreach ($cart->items as $item) {
+            if (!$item->product->status) {
+                return back()->with('error', "'{$item->product->name}' is unavailable. Please remove it from your cart before checkout.");
+            }
+        }
+
         $totalAmount = $cart->items->sum(function ($item) {
             return $item->product->price * $item->quantity;
         });
@@ -93,20 +99,20 @@ class CartController extends Controller
             Stripe::setApiKey(config('services.stripe.secret'));
     
             $paymentIntent = PaymentIntent::create([
-                'amount' => $totalAmount * 100,
+                'amount'   => $totalAmount * 100,
                 'currency' => 'lkr',
                 'metadata' => ['user_id' => auth()->id()],
             ]);
     
             return view('Guest.checkout', [
                 'clientSecret' => $paymentIntent->client_secret,
-                'totalAmount' => $totalAmount,
+                'totalAmount'  => $totalAmount,
             ]);
-            
+    
         } catch (\Exception $e) {
             return back()->with('error', $e->getMessage());
         }
-    }
+    }    
 
     public function checkoutSuccess()
     {

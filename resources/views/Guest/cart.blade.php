@@ -21,7 +21,12 @@
                                 <tr class="bg-white border-b dark:bg-stone-700 text-black dark:text-white">
                                     <td class="py-3 px-4 flex items-center">
                                         <img src="{{ Storage::url($item->product->image) }}" alt="{{ $item->product->name }}" class="w-16 h-16 object-cover rounded shadow-md mr-4">
-                                        <span class="text-sm font-medium">{{ $item->product->name }}</span>
+                                        <div>
+                                            <span class="text-sm font-medium">{{ $item->product->name }}</span>
+                                            @if(!$item->product->status)
+                                                <span class="block text-xs text-red-500 font-bold">Unavailable</span>
+                                            @endif
+                                        </div>
                                     </td>
                                     <td class="py-3 px-4 text-center">
                                         <input 
@@ -60,6 +65,9 @@
                                     class="w-20 h-20 object-cover rounded shadow-md mr-4">
                                 <div>
                                     <h2 class="text-base font-medium">{{ $item->product->name }}</h2>
+                                    @if(!$item->product->status)
+                                        <p class="text-xs text-red-500 font-bold">Unavailable</p>
+                                    @endif
                                     <p class="text-sm text-gray-500 mb-2">Price: Rs. {{ number_format($item->product->price, 2) }}</p>
                                 </div>
                             </div>
