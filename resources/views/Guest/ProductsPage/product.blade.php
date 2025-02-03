@@ -14,7 +14,7 @@
                                     </svg>
                                 </div>
                                 <span class="hidden group-hover:inline-block text-white pr-4 transition-opacity duration-300 opacity-0 group-hover:opacity-100 transform group-hover:translate-x-2">
-                                    Back to Products
+                                    Back
                                 </span>
                             </a>
                         </div>
@@ -23,7 +23,6 @@
                     <p class="mb-2"><strong>Ingredients:</strong> {{ $product->ingredients }}</p>
                     <p class="mb-2"><strong>Category:</strong> {{ $product->category->name }}</p>
                     <p class="mb-2"><strong>Price:</strong> Rs. {{ number_format($product->price, 2) }}</p>
-                    <!-- Availability Badge -->
                     <span class="text-sm 
                         {{ $product->status ? 'text-green-500' : 'text-red-500' }} 
                         font-semibold">
@@ -31,7 +30,6 @@
                     </span>
                     <form action="{{ route('cart.add', $product->id) }}" method="POST">
                         @csrf
-                        <!-- Disable button if out of stock -->
                         <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded 
                             {{ $product->status > 0 ? '' : 'cursor-not-allowed opacity-50' }}" 
                             {{ $product->status < 1 ? 'disabled' : '' }}>
