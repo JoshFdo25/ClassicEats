@@ -11,14 +11,18 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::with('category')->get();
-
+    
         $products->transform(function ($product) {
             $product->image = url('storage/' . $product->image);
+            if ($product->category) {
+                $product->category->image = url('storage/' . $product->category->image);
+            }
             return $product;
         });
     
         return response()->json($products);
     }
+    
 
     public function show($id)
     {
