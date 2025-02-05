@@ -12,6 +12,15 @@ class CartController extends Controller
     public function index(Request $request)
     {
         $cart = $request->user()->cart()->with('items.product')->first();
+    
+        if ($cart) {
+            foreach ($cart->items as $item) {
+                if ($item->product) {
+                    $item->product->image = url('storage/' . $item->product->image);
+                }
+            }
+        }
+    
         return response()->json($cart);
     }
 
@@ -49,6 +58,21 @@ class CartController extends Controller
         }
     
         return response()->json(['error' => 'Unauthorized'], 401);
+    }
+
+    public function updateQuantity(Request $request, $cartItemId)
+    {
+        $cartItem = CartItem::findOrFail($cartItemId);
+
+        $request->validate([
+            'quantity' => 'required|integer|min:1|max:6',
+        ]);
+        
+        $cartItem->update([
+            'quantity' => $request->input('quantity')
+        ]);
+        
+        return response()->json(['message' => 'Quantity updated successfully']);
     }
 
     public function remove($cartItemId)
