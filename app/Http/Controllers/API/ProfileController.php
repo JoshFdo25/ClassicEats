@@ -53,7 +53,11 @@ class ProfileController extends Controller
 
         return response()->json([
             'message' => 'Profile updated successfully',
-            'user' => $user
+            'user' => [
+                'name' => $user->name,
+                'email' => $user->email,
+                'profile_picture' => $user->profile_picture ? url('storage/' . $user->profile_picture) : null
+            ]
         ]);
     }
 
