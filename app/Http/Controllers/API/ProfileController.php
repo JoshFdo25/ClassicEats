@@ -23,7 +23,7 @@ class ProfileController extends Controller
         $validated = $request->validate([
             'name' => 'sometimes|string|max:255',
             'email' => 'sometimes|email|max:255|unique:users,email,' . $user->id,
-            'profile_picture' => 'sometimes|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'profile_picture' => 'sometimes|image|mimes:jpeg,png,jpg,gif|max:5120',
         ]);
 
         $user->fill($validated);
