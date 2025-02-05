@@ -22,7 +22,8 @@ Route::get('/categories', [CategoryController::class, 'index']);
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/profile', [ProfileController::class, 'show']);
-    Route::put('/profile', [ProfileController::class, 'update']);
+    Route::post('/profile/update', [ProfileController::class, 'update']);
+    Route::delete('/profile/delete', [ProfileController::class, 'destroy']);
     Route::post('/logout', [AuthController::class, 'logout']);
 
     Route::get('/cart', [CartController::class, 'index']);
