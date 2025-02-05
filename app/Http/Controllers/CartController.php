@@ -38,7 +38,6 @@ class CartController extends Controller
                 ]);
             }
     
-            // Calculate total cart items
             $totalItems = $cart->items()->sum('quantity');
     
             return $request->wantsJson()

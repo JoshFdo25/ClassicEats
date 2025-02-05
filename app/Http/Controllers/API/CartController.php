@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Cart;
+use App\Models\CartItem;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -17,7 +17,7 @@ class CartController extends Controller
 
     public function add(Request $request, $productId)
     {
-        $product = Product::where('_id', $productId)->first(); // Use '_id' for MongoDB
+        $product = Product::where('_id', $productId)->first();
 
         if (!$product) {
             return response()->json(['error' => 'Product not found'], 404);
@@ -53,7 +53,7 @@ class CartController extends Controller
 
     public function remove($cartItemId)
     {
-        $cartItem = Cart::findOrFail($cartItemId);
+        $cartItem = CartItem::findOrFail($cartItemId);
         $cartItem->delete();
         return response()->json(['message' => 'Item removed from cart']);
     }
