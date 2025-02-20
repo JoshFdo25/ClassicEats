@@ -76,7 +76,7 @@ Route::prefix('admin')->middleware(['auth:admin'])->group(function () {
 });
 
 Route::fallback(function () {
-    return response()->view('errors.404', [], 404);
+    return response()->view('Errors.404', [], 404);
 });
 
 require __DIR__.'/auth.php';
