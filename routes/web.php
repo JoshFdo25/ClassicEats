@@ -75,4 +75,8 @@ Route::prefix('admin')->middleware(['auth:admin'])->group(function () {
     Route::get('categories/delete/{id}', [CategoryController::class, 'delete'])->name('admin.categories.delete');
 });
 
+Route::fallback(function () {
+    return view('errors.404');
+});
+
 require __DIR__.'/auth.php';
