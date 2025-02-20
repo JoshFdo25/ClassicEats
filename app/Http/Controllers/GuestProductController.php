@@ -26,6 +26,11 @@ class GuestProductController extends Controller
     public function show($id)
     {
         $product = Product::with('category')->findOrFail($id);
+
+        if (!$product) {
+            return response()->view('Errors.404', [], 404);
+        }
+
         return view('Guest.ProductsPage.product', compact('product'));
     }
 }
